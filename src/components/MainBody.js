@@ -28,18 +28,27 @@ export default function MainBody({ searchText }) {
             isFeature={featureSelected}
           />
           <div className="lws-bookContainer">
-            {booksarray.length !== 0 && featureSelected
-              ? booksarray
-                  .filter((book) => book.featured === true)
-                  .map((data, i) => <BookCard bookData={data} key={i} />)
-              : booksarray.map((data, i) => (
-                  <BookCard bookData={data} key={i} />
-                ))}
-
-            {searchText &&
-              booksarray
-                .filter((book) => book.name.toLowerCase().includes(searchText))
-                .map((data, i) => <BookCard bookData={data} key={i} />)}
+            {!searchText ? (
+              <>
+                {booksarray.length !== 0 && featureSelected
+                  ? booksarray
+                      .filter((book) => book.featured === true)
+                      .map((data, i) => <BookCard bookData={data} key={i} />)
+                  : booksarray.map((data, i) => (
+                      <BookCard bookData={data} key={i} />
+                    ))}
+              </>
+            ) : (
+              <>
+                {booksarray
+                  .filter((book) =>
+                    book.name.toLowerCase().includes(searchText)
+                  )
+                  .map((data, i) => (
+                    <BookCard bookData={data} key={i} />
+                  ))}
+              </>
+            )}
           </div>
         </div>
         <div>
