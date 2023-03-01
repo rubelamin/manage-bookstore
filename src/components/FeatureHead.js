@@ -2,7 +2,7 @@ import React from "react";
 
 export default function FeatureHead() {
   const featuredHandler = () => {
-    alert("I am clicked");
+    console.log("featured clicked");
   };
 
   return (
