@@ -1,7 +1,10 @@
 import React from "react";
 import logo from "../assets/images/logo.svg";
 
-export default function NavBar() {
+export default function NavBar({ handleSearch }) {
+  const textHandler = (e) => {
+    handleSearch(e);
+  };
   return (
     <nav className="py-4 2xl:px-6">
       <div className="container flex items-center justify-between">
@@ -32,6 +35,7 @@ export default function NavBar() {
               placeholder="Filter books..."
               className="search"
               id="lws-searchBook"
+              onChange={(e) => textHandler(e)}
             />
           </div>
         </form>

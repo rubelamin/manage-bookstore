@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function FeatureHead() {
+export default function FeatureHead({ handleFeature, isFeature }) {
   const featuredHandler = () => {
-    console.log("featured clicked");
+    handleFeature();
   };
 
   return (
@@ -10,11 +10,15 @@ export default function FeatureHead() {
       <h4 className="mt-2 text-xl font-bold">Book List</h4>
 
       <div className="flex items-center space-x-4">
-        <button className="filter-btn active-filter" id="lws-filterAll">
+        <button
+          className={`filter-btn ${!isFeature ? "active-filter" : null}`}
+          id="lws-filterAll"
+          onClick={featuredHandler}
+        >
           All
         </button>
         <button
-          className="filter-btn"
+          className={`filter-btn ${isFeature ? "active-filter" : null}`}
           id="lws-filterFeatured"
           onClick={featuredHandler}
         >
